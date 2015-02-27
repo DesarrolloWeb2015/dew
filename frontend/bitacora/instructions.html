@@ -48,6 +48,14 @@
                     </code>
                 </div>
                 <br/>
+                Adicionalmente debemos instalar ciertos paquetes que utlizamos en nuestra aplicacion antes de poder lanzar el servidor.
+                <ul class="list-group">
+                    <!--<li class="list-group-item"><code>$ sudo pip install djangorestframework</code></li>-->
+                    <li class="list-group-item"><code>$ sudo pip install djangorestframework</code></li>
+                    <li class="list-group-item"><code>$ sudo pip install django-cors-headers</code></li>
+                    <li class="list-group-item"><code>$ sudo pip install MySQL-python</code> *</li>
+                </ul>
+                <span style="font-size: 11px; color:red;">* No siempre es necesario, se recomienda no incluir esté paquete si no falla.</span>
             </p>
         </div>
         <div href="" class="list-group-item">
@@ -95,19 +103,51 @@
         <div href="" class="list-group-item">
             <h4 class="list-group-item-heading">PASO 5: Migrar los modelos de Django a la base de datos creada.</h4>
             <p class="list-group-item-text">
-                Django utiliza los modelos para representar los datos de l
+                Django utiliza los modelos pare representar los datos almacenados en la base de datos, por lo general cada
+                modelo representa una tabla dentro de la base de datos.
+                Para poder utlizar estos modelos con la base de datos necesitamos migrar los modelos de Django a MySQL, pero
+                antes de poder migrar la base de datos necesitamos tener una squema o database creada previamente y el usuario
+                indicado en settings.py para la base de datos.
+                <h5>5.1 Crear usuario MySQL:</h5>
+                <div class="codebox">
+                    <code>
+                        $ mysql -u root
+                        <br/>
+                        mysql> CREATE USER 'daw02'@'localhost' IDENTIFIED BY 'qwerty12';
+                        <br/>
+                        mysql> CREATE DATABASE bitacora;
+                        <br/>
+                        mysql> GRAN ALL PRIVILEGES ON *.* TO 'daw02'@'localhost';
+                    </code>
+                </div>
+                <br/>
+                Con el usuario que tenemos configurado en el proyecto, procedemos a migrar nuestros modelos a la base de
+                datos que hemos creado en local.
+                <div class="codebox">
+                    <code>
+                        $ python manage.py syncdb
+                    </code>
+                </div>
+                <br/>
+            </p>
+        </div>
+        <div href="" class="list-group-item">
+            <h4 class="list-group-item-heading">PASO 6: Lanzar servidor de Django.</h4>
+            Despues de realizar todos los pasos anteriores estamos en condiciones de poder lanzar el servidor y comenzar a
+            desarrollar tanto la parte de backend como la de frontend.
+            Para lanzar el servidor ejecutamos el siguiente comando:
             <div class="codebox">
                 <code>
-                    $ sudo apt-get update
-                    <br/>
-                    $ sudo apt-get dist-upgrade
-                    <br/>
-                    $ sudo apt-get install mysql-server mysql-client
+                    $ python manage.py runserver 0.0.0.0:8000
                 </code>
             </div>
-            Ahora creamos el usuario y le damos la contraseña que vamos a necesitar para neustro proyecto.
             <br/>
-            </p>
+            Si todo va bien podremos acceder al servicio navegable del API rest y veremos algo similar a esto.
+            <img src="images/screenshot_api.png" alt="home api" width="100%"/>
+        </div>
+        <div href="" class="list-group-item">
+            <h4 class="list-group-item-heading">NOTAS.</h4>
+
         </div>
     </div>
 </body>
