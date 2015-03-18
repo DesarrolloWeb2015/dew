@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="TecnoCrown">
+  <head>
+    <meta charset="UTF-8">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="styles/index.css">
+    <title>TecnoCrown</title>
+
+  </head>
+  <body ng-controller="IndexCtrl">
+    <div class="header">
+      <img id="logo" src="image/logo.png"/>
+      <div style="float:right">
+        <div id="locations">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+          </div>
+          <img src="image/esp.jpg"/>
+          <img src="image/eng.jpeg"/>
+        </div>
+        <div id="menu">
+          <ul>
+            <li>Home</li>
+            <li>Projects</li>
+            <li>About us</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="script/app.js"></script>
+    <script src="script/index.js"></script>
+  </body>
+</html>
